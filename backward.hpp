@@ -497,6 +497,7 @@ public:
 	size_t load_here(size_t=0) { return 0; }
 	size_t load_from(void*, size_t=0) { return 0; }
 	unsigned thread_id() const { return 0; }
+	void skip_n_firsts(size_t) { }
 };
 
 #ifdef BACKWARD_SYSTEM_LINUX
@@ -509,6 +510,8 @@ public:
 		return _thread_id;
 	}
 
+	void skip_n_firsts(size_t n) { _skip = n; }
+
 protected:
 	void load_thread_info() {
 		_thread_id = syscall(SYS_gettid);
@@ -519,7 +522,6 @@ protected:
 		}
 	}
 
-	void skip_n_firsts(size_t n) { _skip = n; }
 	size_t skip_n_firsts() const { return _skip; }
 
 private:
