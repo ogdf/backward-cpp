@@ -229,8 +229,8 @@ extern "C" uintptr_t _Unwind_GetIPInfo(_Unwind_Context*, int*);
 			using type = std::unordered_map<K, V>;
 		};
 		using std::move;
-	} // namespace details
-	} // namespace backward
+	}
+	}
 #else // NOT BACKWARD_ATLEAST_CXX11
 #	include <map>
 	namespace backward {
@@ -243,8 +243,8 @@ extern "C" uintptr_t _Unwind_GetIPInfo(_Unwind_Context*, int*);
 			const T& move(const T& v) { return v; }
 		template <typename T>
 			T& move(T& v) { return v; }
-	} // namespace details
-	} // namespace backward
+	}
+	}
 #endif // BACKWARD_ATLEAST_CXX11
 
 namespace backward {
@@ -261,7 +261,7 @@ namespace system_tag {
 #else
 #	error "May I please get my system defines?"
 #endif
-} // namespace system_tag
+}
 
 
 namespace trace_resolver_tag {
@@ -280,7 +280,7 @@ namespace trace_resolver_tag {
 #		error "You shall not pass, until you know what you want."
 #	endif
 #endif // BACKWARD_SYSTEM_LINUX
-} // namespace trace_resolver_tag
+}
 
 
 namespace details {
@@ -424,7 +424,7 @@ private:
 struct demangler:
 	public demangler_impl<system_tag::current_tag> {};
 
-} // namespace details
+}
 
 /*************** A TRACE ***************/
 
@@ -602,7 +602,7 @@ size_t unwind(F f, size_t depth) {
 	return unwinder(f, depth);
 }
 
-} // namespace details
+}
 
 
 template <>
@@ -1670,7 +1670,7 @@ namespace Color {
 		purple = 35,
 		reset  = 39
 	};
-} // namespace Color
+}
 
 class Colorize {
 public:
@@ -1719,7 +1719,7 @@ namespace Color {
 		purple = 0,
 		reset  = 0
 	};
-} // namespace Color
+}
 
 class Colorize {
 public:
@@ -2042,6 +2042,6 @@ public:
 
 #endif // BACKWARD_SYSTEM_UNKNOWN
 
-} // namespace backward
+}
 
 #endif /* H_GUARD */
